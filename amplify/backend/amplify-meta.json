@@ -25,8 +25,8 @@
 				"s3TemplateURL": "https://s3.amazonaws.com/appsync-20181104200152-deployment/amplify-cfn-templates/api/cloudformation-template.json",
 				"logicalId": "apiappsync"
 			},
-			"lastPushTimeStamp": "2018-11-05T01:09:41.129Z",
-			"lastPushDirHash": "jU9J8fHIngmXqvFOPPreTLaDnRs="
+			"lastPushTimeStamp": "2018-11-07T03:47:12.934Z",
+			"lastPushDirHash": "FSbezIKcgqjFoS87MFShDuzuH9U="
 		}
 	}
 }

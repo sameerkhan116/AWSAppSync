@@ -1,27 +1,27 @@
 // tslint:disable
 // this is an auto generated file. This will be overwritten
 
-export const onCreateTodo = `subscription OnCreateTodo {
-  onCreateTodo {
+export const onCreateAuction = `subscription OnCreateAuction {
+  onCreateAuction {
     id
     name
-    description
+    price
   }
 }
 `;
-export const onUpdateTodo = `subscription OnUpdateTodo {
-  onUpdateTodo {
+export const onUpdateAuction = `subscription OnUpdateAuction {
+  onUpdateAuction {
     id
     name
-    description
+    price
   }
 }
 `;
-export const onDeleteTodo = `subscription OnDeleteTodo {
-  onDeleteTodo {
+export const onDeleteAuction = `subscription OnDeleteAuction {
+  onDeleteAuction {
     id
     name
-    description
+    price
   }
 }
 `;

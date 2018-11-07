@@ -69,14 +69,14 @@
                 }
             }
         },
-        "TodoTable": {
+        "AuctionTable": {
             "Type": "AWS::DynamoDB::Table",
             "Properties": {
                 "TableName": {
                     "Fn::Join": [
                         "-",
                         [
-                            "Todo",
+                            "Auction",
                             {
                                 "Fn::GetAtt": [
                                     "GraphQLAPI",
@@ -111,14 +111,14 @@
                 }
             }
         },
-        "TodoIAMRole": {
+        "AuctionIAMRole": {
             "Type": "AWS::IAM::Role",
             "Properties": {
                 "RoleName": {
                     "Fn::Join": [
                         "-",
                         [
-                            "TodoTable",
+                            "AuctionTable",
                             "role",
                             {
                                 "Fn::GetAtt": [
@@ -162,7 +162,7 @@
                                     "Resource": [
                                         {
                                             "Fn::GetAtt": [
-                                                "TodoTable",
+                                                "AuctionTable",
                                                 "Arn"
                                             ]
                                         },
@@ -172,7 +172,7 @@
                                                 [
                                                     {
                                                         "Fn::GetAtt": [
-                                                            "TodoTable",
+                                                            "AuctionTable",
                                                             "Arn"
                                                         ]
                                                     },
@@ -188,7 +188,7 @@
                 ]
             }
         },
-        "TodoDataSource": {
+        "AuctionDataSource": {
             "Type": "AWS::AppSync::DataSource",
             "Properties": {
                 "ApiId": {
@@ -197,11 +197,11 @@
                         "ApiId"
                     ]
                 },
-                "Name": "TodoTable",
+                "Name": "AuctionTable",
                 "Type": "AMAZON_DYNAMODB",
                 "ServiceRoleArn": {
                     "Fn::GetAtt": [
-                        "TodoIAMRole",
+                        "AuctionIAMRole",
                         "Arn"
                     ]
                 },
@@ -214,7 +214,7 @@
                                     ":",
                                     {
                                         "Fn::GetAtt": [
-                                            "TodoTable",
+                                            "AuctionTable",
                                             "Arn"
                                         ]
                                     }
@@ -223,13 +223,13 @@
                         ]
                     },
                     "TableName": {
-                        "Ref": "TodoTable"
+                        "Ref": "AuctionTable"
                     }
                 }
             },
-            "DependsOn": "TodoIAMRole"
+            "DependsOn": "AuctionIAMRole"
         },
-        "GetTodoResolver": {
+        "GetAuctionResolver": {
             "Type": "AWS::AppSync::Resolver",
             "Properties": {
                 "ApiId": {
@@ -240,11 +240,11 @@
                 },
                 "DataSourceName": {
                     "Fn::GetAtt": [
-                        "TodoDataSource",
+                        "AuctionDataSource",
                         "Name"
                     ]
                 },
-                "FieldName": "getTodo",
+                "FieldName": "getAuction",
                 "TypeName": "Query",
                 "RequestMappingTemplateS3Location": {
                     "Fn::Join": [
@@ -266,7 +266,7 @@
                                                 ".",
                                                 [
                                                     "Query",
-                                                    "getTodo",
+                                                    "getAuction",
                                                     "request",
                                                     {
                                                         "Ref": "DeploymentTimestamp"
@@ -300,7 +300,7 @@
                                                 ".",
                                                 [
                                                     "Query",
-                                                    "getTodo",
+                                                    "getAuction",
                                                     "response",
                                                     {
                                                         "Ref": "DeploymentTimestamp"
@@ -317,7 +317,7 @@
             },
             "DependsOn": "GraphQLSchema"
         },
-        "ListTodoResolver": {
+        "ListAuctionResolver": {
             "Type": "AWS::AppSync::Resolver",
             "Properties": {
                 "ApiId": {
@@ -328,11 +328,11 @@
                 },
                 "DataSourceName": {
                     "Fn::GetAtt": [
-                        "TodoDataSource",
+                        "AuctionDataSource",
                         "Name"
                     ]
                 },
-                "FieldName": "listTodos",
+                "FieldName": "listAuctions",
                 "TypeName": "Query",
                 "RequestMappingTemplateS3Location": {
                     "Fn::Join": [
@@ -354,7 +354,7 @@
                                                 ".",
                                                 [
                                                     "Query",
-                                                    "listTodos",
+                                                    "listAuctions",
                                                     "request",
                                                     {
                                                         "Ref": "DeploymentTimestamp"
@@ -388,7 +388,7 @@
                                                 ".",
                                                 [
                                                     "Query",
-                                                    "listTodos",
+                                                    "listAuctions",
                                                     "response",
                                                     {
                                                         "Ref": "DeploymentTimestamp"
@@ -405,7 +405,7 @@
             },
             "DependsOn": "GraphQLSchema"
         },
-        "CreateTodoResolver": {
+        "CreateAuctionResolver": {
             "Type": "AWS::AppSync::Resolver",
             "Properties": {
                 "ApiId": {
@@ -416,11 +416,11 @@
                 },
                 "DataSourceName": {
                     "Fn::GetAtt": [
-                        "TodoDataSource",
+                        "AuctionDataSource",
                         "Name"
                     ]
                 },
-                "FieldName": "createTodo",
+                "FieldName": "createAuction",
                 "TypeName": "Mutation",
                 "RequestMappingTemplateS3Location": {
                     "Fn::Join": [
@@ -442,7 +442,7 @@
                                                 ".",
                                                 [
                                                     "Mutation",
-                                                    "createTodo",
+                                                    "createAuction",
                                                     "request",
                                                     {
                                                         "Ref": "DeploymentTimestamp"
@@ -476,7 +476,7 @@
                                                 ".",
                                                 [
                                                     "Mutation",
-                                                    "createTodo",
+                                                    "createAuction",
                                                     "response",
                                                     {
                                                         "Ref": "DeploymentTimestamp"
@@ -493,7 +493,7 @@
             },
             "DependsOn": "GraphQLSchema"
         },
-        "UpdateTodoResolver": {
+        "UpdateAuctionResolver": {
             "Type": "AWS::AppSync::Resolver",
             "Properties": {
                 "ApiId": {
@@ -504,11 +504,11 @@
                 },
                 "DataSourceName": {
                     "Fn::GetAtt": [
-                        "TodoDataSource",
+                        "AuctionDataSource",
                         "Name"
                     ]
                 },
-                "FieldName": "updateTodo",
+                "FieldName": "updateAuction",
                 "TypeName": "Mutation",
                 "RequestMappingTemplateS3Location": {
                     "Fn::Join": [
@@ -530,7 +530,7 @@
                                                 ".",
                                                 [
                                                     "Mutation",
-                                                    "updateTodo",
+                                                    "updateAuction",
                                                     "request",
                                                     {
                                                         "Ref": "DeploymentTimestamp"
@@ -564,7 +564,7 @@
                                                 ".",
                                                 [
                                                     "Mutation",
-                                                    "updateTodo",
+                                                    "updateAuction",
                                                     "response",
                                                     {
                                                         "Ref": "DeploymentTimestamp"
@@ -581,7 +581,7 @@
             },
             "DependsOn": "GraphQLSchema"
         },
-        "DeleteTodoResolver": {
+        "DeleteAuctionResolver": {
             "Type": "AWS::AppSync::Resolver",
             "Properties": {
                 "ApiId": {
@@ -592,11 +592,11 @@
                 },
                 "DataSourceName": {
                     "Fn::GetAtt": [
-                        "TodoDataSource",
+                        "AuctionDataSource",
                         "Name"
                     ]
                 },
-                "FieldName": "deleteTodo",
+                "FieldName": "deleteAuction",
                 "TypeName": "Mutation",
                 "RequestMappingTemplateS3Location": {
                     "Fn::Join": [
@@ -618,7 +618,7 @@
                                                 ".",
                                                 [
                                                     "Mutation",
-                                                    "deleteTodo",
+                                                    "deleteAuction",
                                                     "request",
                                                     {
                                                         "Ref": "DeploymentTimestamp"
@@ -652,7 +652,7 @@
                                                 ".",
                                                 [
                                                     "Mutation",
-                                                    "deleteTodo",
+                                                    "deleteAuction",
                                                     "response",
                                                     {
                                                         "Ref": "DeploymentTimestamp"

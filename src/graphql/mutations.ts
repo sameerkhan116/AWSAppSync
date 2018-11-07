@@ -1,27 +1,27 @@
 // tslint:disable
 // this is an auto generated file. This will be overwritten
 
-export const createTodo = `mutation CreateTodo($input: CreateTodoInput!) {
-  createTodo(input: $input) {
+export const createAuction = `mutation CreateAuction($input: CreateAuctionInput!) {
+  createAuction(input: $input) {
     id
     name
-    description
+    price
   }
 }
 `;
-export const updateTodo = `mutation UpdateTodo($input: UpdateTodoInput!) {
-  updateTodo(input: $input) {
+export const updateAuction = `mutation UpdateAuction($input: UpdateAuctionInput!) {
+  updateAuction(input: $input) {
     id
     name
-    description
+    price
   }
 }
 `;
-export const deleteTodo = `mutation DeleteTodo($input: DeleteTodoInput!) {
-  deleteTodo(input: $input) {
+export const deleteAuction = `mutation DeleteAuction($input: DeleteAuctionInput!) {
+  deleteAuction(input: $input) {
     id
     name
-    description
+    price
   }
 }
 `;

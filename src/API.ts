@@ -1,29 +1,29 @@
 /* tslint:disable */
 //  This file was automatically generated and should not be edited.
 
-export type CreateTodoInput = {
+export type CreateAuctionInput = {
   id?: string | null,
   name: string,
-  description?: string | null,
+  price?: number | null,
 };
 
-export type UpdateTodoInput = {
+export type UpdateAuctionInput = {
   id: string,
   name?: string | null,
-  description?: string | null,
+  price?: number | null,
 };
 
-export type DeleteTodoInput = {
+export type DeleteAuctionInput = {
   id?: string | null,
 };
 
-export type ModelTodoFilterInput = {
+export type ModelAuctionFilterInput = {
   id?: ModelIDFilterInput | null,
   name?: ModelStringFilterInput | null,
-  description?: ModelStringFilterInput | null,
-  and?: Array< ModelTodoFilterInput | null > | null,
-  or?: Array< ModelTodoFilterInput | null > | null,
-  not?: ModelTodoFilterInput | null,
+  price?: ModelFloatFilterInput | null,
+  and?: Array< ModelAuctionFilterInput | null > | null,
+  or?: Array< ModelAuctionFilterInput | null > | null,
+  not?: ModelAuctionFilterInput | null,
 };
 
 export type ModelIDFilterInput = {
@@ -52,100 +52,112 @@ export type ModelStringFilterInput = {
   beginsWith?: string | null,
 };
 
-export type CreateTodoMutationVariables = {
-  input: CreateTodoInput,
+export type ModelFloatFilterInput = {
+  ne?: number | null,
+  eq?: number | null,
+  le?: number | null,
+  lt?: number | null,
+  ge?: number | null,
+  gt?: number | null,
+  contains?: number | null,
+  notContains?: number | null,
+  between?: Array< number | null > | null,
 };
 
-export type CreateTodoMutation = {
-  createTodo:  {
-    __typename: "Todo",
+export type CreateAuctionMutationVariables = {
+  input: CreateAuctionInput,
+};
+
+export type CreateAuctionMutation = {
+  createAuction:  {
+    __typename: "Auction",
     id: string,
     name: string,
-    description: string | null,
+    price: number | null,
   } | null,
 };
 
-export type UpdateTodoMutationVariables = {
-  input: UpdateTodoInput,
+export type UpdateAuctionMutationVariables = {
+  input: UpdateAuctionInput,
 };
 
-export type UpdateTodoMutation = {
-  updateTodo:  {
-    __typename: "Todo",
+export type UpdateAuctionMutation = {
+  updateAuction:  {
+    __typename: "Auction",
     id: string,
     name: string,
-    description: string | null,
+    price: number | null,
   } | null,
 };
 
-export type DeleteTodoMutationVariables = {
-  input: DeleteTodoInput,
+export type DeleteAuctionMutationVariables = {
+  input: DeleteAuctionInput,
 };
 
-export type DeleteTodoMutation = {
-  deleteTodo:  {
-    __typename: "Todo",
+export type DeleteAuctionMutation = {
+  deleteAuction:  {
+    __typename: "Auction",
     id: string,
     name: string,
-    description: string | null,
+    price: number | null,
   } | null,
 };
 
-export type GetTodoQueryVariables = {
+export type GetAuctionQueryVariables = {
   id: string,
 };
 
-export type GetTodoQuery = {
-  getTodo:  {
-    __typename: "Todo",
+export type GetAuctionQuery = {
+  getAuction:  {
+    __typename: "Auction",
     id: string,
     name: string,
-    description: string | null,
+    price: number | null,
   } | null,
 };
 
-export type ListTodosQueryVariables = {
-  filter?: ModelTodoFilterInput | null,
+export type ListAuctionsQueryVariables = {
+  filter?: ModelAuctionFilterInput | null,
   limit?: number | null,
   nextToken?: string | null,
 };
 
-export type ListTodosQuery = {
-  listTodos:  {
-    __typename: "ModelTodoConnection",
+export type ListAuctionsQuery = {
+  listAuctions:  {
+    __typename: "ModelAuctionConnection",
     items:  Array< {
-      __typename: "Todo",
+      __typename: "Auction",
       id: string,
       name: string,
-      description: string | null,
+      price: number | null,
     } | null > | null,
     nextToken: string | null,
   } | null,
 };
 
-export type OnCreateTodoSubscription = {
-  onCreateTodo:  {
-    __typename: "Todo",
+export type OnCreateAuctionSubscription = {
+  onCreateAuction:  {
+    __typename: "Auction",
     id: string,
     name: string,
-    description: string | null,
+    price: number | null,
   } | null,
 };
 
-export type OnUpdateTodoSubscription = {
-  onUpdateTodo:  {
-    __typename: "Todo",
+export type OnUpdateAuctionSubscription = {
+  onUpdateAuction:  {
+    __typename: "Auction",
     id: string,
     name: string,
-    description: string | null,
+    price: number | null,
   } | null,
 };
 
-export type OnDeleteTodoSubscription = {
-  onDeleteTodo:  {
-    __typename: "Todo",
+export type OnDeleteAuctionSubscription = {
+  onDeleteAuction:  {
+    __typename: "Auction",
     id: string,
     name: string,
-    description: string | null,
+    price: number | null,
   } | null,
 };

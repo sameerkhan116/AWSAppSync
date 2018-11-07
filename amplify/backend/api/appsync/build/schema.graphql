@@ -1,7 +1,7 @@
-type Todo {
+type Auction {
   id: ID!
   name: String!
-  description: String
+  price: Float
 }
 
 enum ModelSortDirection {
@@ -9,8 +9,8 @@ enum ModelSortDirection {
   DESC
 }
 
-type ModelTodoConnection {
-  items: [Todo]
+type ModelAuctionConnection {
+  items: [Auction]
   nextToken: String
 }
 
@@ -69,44 +69,44 @@ input ModelBooleanFilterInput {
   eq: Boolean
 }
 
-input ModelTodoFilterInput {
+input ModelAuctionFilterInput {
   id: ModelIDFilterInput
   name: ModelStringFilterInput
-  description: ModelStringFilterInput
-  and: [ModelTodoFilterInput]
-  or: [ModelTodoFilterInput]
-  not: ModelTodoFilterInput
+  price: ModelFloatFilterInput
+  and: [ModelAuctionFilterInput]
+  or: [ModelAuctionFilterInput]
+  not: ModelAuctionFilterInput
 }
 
 type Query {
-  getTodo(id: ID!): Todo
-  listTodos(filter: ModelTodoFilterInput, limit: Int, nextToken: String): ModelTodoConnection
+  getAuction(id: ID!): Auction
+  listAuctions(filter: ModelAuctionFilterInput, limit: Int, nextToken: String): ModelAuctionConnection
 }
 
-input CreateTodoInput {
+input CreateAuctionInput {
   id: ID
   name: String!
-  description: String
+  price: Float
 }
 
-input UpdateTodoInput {
+input UpdateAuctionInput {
   id: ID!
   name: String
-  description: String
+  price: Float
 }
 
-input DeleteTodoInput {
+input DeleteAuctionInput {
   id: ID
 }
 
 type Mutation {
-  createTodo(input: CreateTodoInput!): Todo
-  updateTodo(input: UpdateTodoInput!): Todo
-  deleteTodo(input: DeleteTodoInput!): Todo
+  createAuction(input: CreateAuctionInput!): Auction
+  updateAuction(input: UpdateAuctionInput!): Auction
+  deleteAuction(input: DeleteAuctionInput!): Auction
 }
 
 type Subscription {
-  onCreateTodo: Todo @aws_subscribe(mutations: ["createTodo"])
-  onUpdateTodo: Todo @aws_subscribe(mutations: ["updateTodo"])
-  onDeleteTodo: Todo @aws_subscribe(mutations: ["deleteTodo"])
+  onCreateAuction: Auction @aws_subscribe(mutations: ["createAuction"])
+  onUpdateAuction: Auction @aws_subscribe(mutations: ["updateAuction"])
+  onDeleteAuction: Auction @aws_subscribe(mutations: ["deleteAuction"])
 }

@@ -1,5 +1,5 @@
-type Todo @model {
+type Auction @model {
   id: ID!
   name: String!
-  description: String
+  price: Float
 }
