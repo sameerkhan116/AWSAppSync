@@ -10,7 +10,7 @@ export const Auctions = () => {
   return (
     <Query<ListAuctionsQuery, ListAuctionsQueryVariables>
       query={gql(listAuctions)}
-      variables={{ limit: 5 }}
+      variables={{ limit: 10 }}
     >
       {({ data, loading }) =>
         loading ||

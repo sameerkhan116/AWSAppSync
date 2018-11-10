@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import AWSAppSyncClient, { AUTH_TYPE } from 'aws-appsync';
 import { ApolloProvider } from 'react-apollo';
-import { Rehydrated } from 'aws-appsync-react';
 
 import AppSyncConfig from './aws-exports';
 import App from './App';
@@ -15,13 +14,12 @@ const client = new AWSAppSyncClient({
     type: AppSyncConfig.aws_appsync_authenticationType as AUTH_TYPE,
     apiKey: AppSyncConfig.aws_appsync_apiKey,
   },
+  disableOffline: true,
 });
 
 ReactDOM.render(
   <ApolloProvider client={client}>
-    <Rehydrated>
-      <App />
-    </Rehydrated>
+    <App />
   </ApolloProvider>,
   document.getElementById('root'),
 );
