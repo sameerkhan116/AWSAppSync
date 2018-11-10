@@ -5,14 +5,17 @@ import gql from 'graphql-tag';
 import { ListAuctionsQuery, ListAuctionsQueryVariables } from './API';
 import { listAuctions } from './graphql/queries';
 import { AuctionCard } from './AuctionCard';
+import { OnMount } from './components/OnMount';
+import { onCreateAuction } from './graphql/subscriptions';
+import { buildSubscription } from 'aws-appsync';
 
 export const Auctions = () => {
   return (
     <Query<ListAuctionsQuery, ListAuctionsQueryVariables>
       query={gql(listAuctions)}
-      variables={{ limit: 10 }}
+      variables={{ limit: 100 }}
     >
-      {({ data, loading }) =>
+      {({ data, loading, subscribeToMore }) =>
         loading ||
         !data ||
         !data.listAuctions ||
@@ -24,6 +27,13 @@ export const Auctions = () => {
               gridGap: '10px',
             }}
           >
+            <OnMount
+              onEffect={() =>
+                subscribeToMore(
+                  buildSubscription(gql(onCreateAuction), gql(listAuctions)),
+                )
+              }
+            />
             {data.listAuctions.items.map(
               x =>
                 !x ? null : (

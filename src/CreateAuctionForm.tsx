@@ -64,6 +64,7 @@ export const CreateAuctionForm = () => {
               },
             });
             console.log(response);
+            resetForm();
           }}
         >
           {({ values, handleChange, handleSubmit }) => (
