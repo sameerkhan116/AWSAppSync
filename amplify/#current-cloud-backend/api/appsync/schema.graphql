@@ -1,5 +1,11 @@
-type Auction @model {
+type Auction
+  @model
+  @auth(
+    rules: [
+      { allow: owner, queries: null, mutations: [create, update, delete] }
+    ]
+  ) {
   id: ID!
   name: String!
-  price: Float
+  price: Float!
 }

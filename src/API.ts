@@ -4,7 +4,7 @@
 export type CreateAuctionInput = {
   id?: string | null,
   name: string,
-  price?: number | null,
+  price: number,
 };
 
 export type UpdateAuctionInput = {
@@ -73,7 +73,7 @@ export type CreateAuctionMutation = {
     __typename: "Auction",
     id: string,
     name: string,
-    price: number | null,
+    price: number,
   } | null,
 };
 
@@ -86,7 +86,7 @@ export type UpdateAuctionMutation = {
     __typename: "Auction",
     id: string,
     name: string,
-    price: number | null,
+    price: number,
   } | null,
 };
 
@@ -99,7 +99,7 @@ export type DeleteAuctionMutation = {
     __typename: "Auction",
     id: string,
     name: string,
-    price: number | null,
+    price: number,
   } | null,
 };
 
@@ -112,7 +112,7 @@ export type GetAuctionQuery = {
     __typename: "Auction",
     id: string,
     name: string,
-    price: number | null,
+    price: number,
   } | null,
 };
 
@@ -129,7 +129,7 @@ export type ListAuctionsQuery = {
       __typename: "Auction",
       id: string,
       name: string,
-      price: number | null,
+      price: number,
     } | null > | null,
     nextToken: string | null,
   } | null,
@@ -140,7 +140,7 @@ export type OnCreateAuctionSubscription = {
     __typename: "Auction",
     id: string,
     name: string,
-    price: number | null,
+    price: number,
   } | null,
 };
 
@@ -149,7 +149,7 @@ export type OnUpdateAuctionSubscription = {
     __typename: "Auction",
     id: string,
     name: string,
-    price: number | null,
+    price: number,
   } | null,
 };
 
@@ -158,6 +158,6 @@ export type OnDeleteAuctionSubscription = {
     __typename: "Auction",
     id: string,
     name: string,
-    price: number | null,
+    price: number,
   } | null,
 };
